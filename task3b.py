@@ -29,12 +29,12 @@ for i in range(0, len(co2_list[0])):
         if l2[i] == "0":
             count0 += 1
     if count0 <= len(co2_list) / 2:
-        most_common = "0"
+        less_common = "0"
     else:
-        most_common = "1"
+        less_common = "1"
     del_nr = 0
     for j in range(0, len(co2_list)):
-        if co2_list[j - del_nr][i] != most_common:
+        if co2_list[j - del_nr][i] != less_common:
             co2_list.pop(j - del_nr)
             del_nr += 1
     if len(co2_list) <= 1:
