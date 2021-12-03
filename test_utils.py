@@ -1,5 +1,5 @@
 import utils.utils as utils
 
-c=utils.read_file("files/task2.txt")
+c = utils.read_file("files/task3_test.txt")
 for line in c:
-    print(line[0], ' ', line[1])
+    print(line)
