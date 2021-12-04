@@ -41,13 +41,11 @@ for num in num_list:
                                 if len(bingo_list)==0: finished=True
                                 break
                     if board_removed: break
-unmarked_used=[]; unmarked_num=0
+unmarked_num=0
 for i in range (0, len(last_board)):
     for j in range (0,len(last_board[i])):
         if not last_status_board[i][j]:
-            if not (last_board[i][j] in unmarked_used):
-                unmarked_num +=  last_board[i][j]
-                unmarked_used.append(last_board[i][j])
+            unmarked_num +=  last_board[i][j]
 print (f"Unset Value: {unmarked_num}")
 print (f"Last Number: {end_num}")
 print (f"Result: {unmarked_num*end_num}")
