@@ -24,6 +24,10 @@ for num in num_list:
                     found = True
                     for elem in status_list[i][j]: 
                         if not elem: found=False; break
+                    if not found:
+                        found=True
+                        for l in range (0, len(bingo_list[i])):
+                            if not status_list[i][l][k]: found=False
                     if found: 
                         finish=True
                         end_num=num

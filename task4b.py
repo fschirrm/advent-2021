@@ -30,6 +30,10 @@ for num in num_list:
                             found = True
                             for elem in status_list[i-boards_found][j]: 
                                 if not elem: found=False; break
+                            if not found:
+                                found=True
+                                for l in range (0, len(bingo_list[i-boards_found])):
+                                    if not status_list[i-boards_found][l][k]: found=False
                             if found: 
                                 end_num=num
                                 last_board = bingo_list[i-boards_found]
