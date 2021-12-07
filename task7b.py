@@ -13,8 +13,7 @@ for i in range(min(crab_list), max(crab_list) + 1):
     curr_fuel = 0
     for key in crab_dict:
         diff = abs(key - i)
-        fuel_pos = sum(range(1, diff + 1))
-        fuel_pos *= crab_dict[key]
+        fuel_pos = sum(range(1, diff + 1))*crab_dict[key]
         curr_fuel += fuel_pos
     if (min_fuel == -1) or (curr_fuel < min_fuel):
         min_fuel = curr_fuel
