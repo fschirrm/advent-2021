@@ -18,4 +18,4 @@ for i in range(len(heightmap)):
                         sum_risks += heightmap[i][j] + 1
                         low_points.append(heightmap[i][j])
 print(f"Sum of Risks = {sum_risks}")
-#print(low_points)
+# print(low_points)
