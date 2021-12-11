@@ -7,7 +7,6 @@ def get_neighbours(a,b,max_a,max_b):
     neighbours = [(x,y) for (x,y) in n_full if (x>=0) and (y>=0) and (x<max_a) and y<max_b]
     return(neighbours)
     
-
 inp_list = utils.read_num_list("files/task11.txt")
 curr_list = inp_list
 flash_count = 0
