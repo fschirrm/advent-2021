@@ -3,6 +3,15 @@ def read_file(f):
         content = [line.strip().split(" ") for line in f.readlines()]
     return content
 
+def read_num_list(f):
+    num_field=[]
+    with open(f) as f:
+        line = f.readline()
+        while line:
+            num_field.append(list(line.strip()))
+            line = f.readline()
+    return num_field
+
 def read_bingo(f):
     with open(f) as f:
         content=f.readlines()
