@@ -1,5 +1,4 @@
 import utils.utils as utils
-
 steps=100
 
 def get_neighbours(a,b,max_a,max_b):
@@ -14,7 +13,6 @@ rounds = 0
 while(True):
     rounds += 1
     flash_list = []
-    #curr_list = step_list[i].copy()
     for elem in curr_list:
         flash_line = [False for e1 in elem]
         flash_list.append(flash_line) 
