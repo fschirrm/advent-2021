@@ -8,7 +8,8 @@ def read_num_list(f):
     with open(f) as f:
         line = f.readline()
         while line:
-            num_field.append(list(line.strip()))
+            char_list=list(line.strip())
+            num_field.append([int(c1) for c1 in char_list])
             line = f.readline()
     return num_field
 
