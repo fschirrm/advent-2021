@@ -1,38 +1,59 @@
 import utils.utils as utils
 
-path_list = []
-curr_short_risk = 0
-inp_list = utils.read_num_list("files/task15.txt")
-print(inp_list)
+open_nodes=[]
 
-def search_path (x,y,risk,curr_path):
-    global curr_short_risk
-    global path_list
-    if x!=0 or y!=0: risk += inp_list[x][y]
-    if risk >= curr_short_risk  : return
-    if (x==(len(inp_list)-1)) and (y==(len(inp_list[len(inp_list)-1])-1)):
-        path_list=curr_path
-        curr_short_risk=risk
-        print(curr_short_risk)
-        print(path_list)
-    if x<len(inp_list)-1: search_path (x+1,y,risk,curr_path+[(x+1,y)])
-    if y<len(inp_list[0])-1: search_path (x,y+1,risk,curr_path+[(x,y+1)])
-    #if x>0 and x==path_list[-1][0]: search_path (x-1,y,risk,curr_path+[(x-1,y)])
-    #if y>0 and y==path_list[-1][1]: search_path (x,y-1,risk,curr_path+[(x,y-1)])
+def insert_node(node):
+    global open_nodes
+    if len(open_nodes)==0: open_nodes.append(node)
+    else:
+        inserted=False
+        for i in range(len(open_nodes)-1,-1,-1):
+            if (node['risk'] > open_nodes[i]['risk']):
+                open_nodes.insert(i+1,node)
+                inserted=True
+                break
+        if not inserted: 
+            open_nodes.insert(0,node)
     return
-    
-i=0; j=0
-while (i<len(inp_list)-1) and (j<len(inp_list[0])-1):
-    path_list.append((i,j))
-    if i>0 or j> 0: curr_short_risk += inp_list[i][j]
-    if (i<len(inp_list)-1):
-        if (j<len(inp_list)-1):
-            if inp_list[i+1][j]<=inp_list[i][j+1]: i+=1
-            else: j+=1
-        else: i+=1
-    else: j+=1
-print(curr_short_risk)
-print(path_list)
-search_path(0,0,0,[])
-print()
-print(curr_short_risk)
+
+inp_list = utils.read_num_list("files/task15.txt")
+dij_field = []
+for i in range(len(inp_list)):
+    new_line=[]
+    for j in range(len(inp_list[i])):
+        new_line.append({'pos': (i,j), 'pre': None, 'risk': -1,
+        'finished': False, 'value':inp_list[i][j]})
+    dij_field.append(new_line)
+dij_field[0][0]['risk']=0   
+open_nodes.append(dij_field[0][0])
+finished=False
+while not finished:
+    curr_node = open_nodes.pop(0)
+    curr_node['finished']=True
+    n_pos=[(curr_node['pos'][0]-1, curr_node['pos'][1]), (curr_node['pos'][0], curr_node['pos'][1]-1),
+    (curr_node['pos'][0]+1, curr_node['pos'][1]), (curr_node['pos'][0], curr_node['pos'][1]+1)]
+    n_list=[]
+    for elem in n_pos:
+        if elem[0]>=0 and elem[0]<len(inp_list) and elem[1]>=0 and elem[1]<len(inp_list[0]):
+            if not dij_field[elem[0]][elem[1]]['finished']:
+                new_risk = curr_node['risk']+dij_field[elem[0]][elem[1]]['value']
+                if dij_field[elem[0]][elem[1]]['risk']>=0:
+                    if new_risk<dij_field[elem[0]][elem[1]]['risk']:
+                        dij_field[elem[0]][elem[1]]['risk']=new_risk
+                        dij_field[elem[0]][elem[1]]['pre']=(curr_node['pos'])
+                else:
+                    dij_field[elem[0]][elem[1]]['risk']=new_risk
+                    dij_field[elem[0]][elem[1]]['pre']=(curr_node['pos'])
+                    if elem[0]==len(inp_list)-1 and elem[1]==len(inp_list[0])-1: 
+                        finished=True
+                        break
+                    else: 
+                        insert_node(dij_field[elem[0]][elem[1]])
+print (f"Result = {dij_field[len(dij_field)-1][len(dij_field[0])-1]['risk']}")
+finished=False
+curr_node=dij_field[len(dij_field)-1][len(dij_field[0])-1]
+# while not finished:
+#     if curr_node['pos']==(0,0): finished=True
+#     else:
+#         print(curr_node['pos'],'   ',curr_node['risk'],'   ',curr_node['value'])
+#         curr_node=dij_field[curr_node['pre'][0]][curr_node['pre'][1]]
