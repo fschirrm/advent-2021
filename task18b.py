@@ -47,9 +47,7 @@ for elem in inp_list:
         if num_str == '': i += 1
         else: elem_new.append(int(num_str))
     task_list.append(elem_new)
-# print(task_list)
 curr_result = task_list[0]
-# print (curr_result)
 for k in range (1,len(task_list)):
     curr_result.insert(0,'[')
     curr_result += task_list[k]
