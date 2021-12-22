@@ -47,7 +47,7 @@ for elem in inp_list:
         if num_str == '': i += 1
         else: elem_new.append(int(num_str))
     task_list.append(elem_new)
-curr_result = task_list[0]
+
 max_mag = 0
 for k in range (len(task_list)):
     for l in range(len(task_list)):
