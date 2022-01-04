@@ -9,13 +9,11 @@ for elem in instr_list:
         for i in range(y + 1):
             for j in range(x):
                 orig_list[i][j] = orig_list[i][j] or orig_list[2*y-i][j]
-                orig_list[2*y-i][j] = False
     else:
         x=elem[1]  
         for i in range(y):
             for j in range(x + 1):
                 orig_list[i][j] = orig_list[i][j] or orig_list[i][2*x-j]
-                orig_list[i][2*x-j] = False
                 
 for i in range(y):
     curr_line=""
