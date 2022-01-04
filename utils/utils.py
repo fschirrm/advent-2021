@@ -13,6 +13,23 @@ def read_num_list(f):
             line = f.readline()
     return num_field
 
+def read_orig(f):
+    orig_list = [[False for i in range(1500)] for j in range(1500)]
+    with open(f) as f:
+        line = f.readline()
+        while line != "\n":
+            coord = line.strip().split(",")
+            orig_list[int(coord[1])][int(coord[0])] = True
+            line = f.readline()
+        line = f.readline()
+        instr_list = []
+        while line:
+            inp = line.strip().split()
+            instr = inp[2].split("=")
+            instr_list.append((instr[0],int(instr[1])))
+            line = f.readline()
+    return orig_list, instr_list
+
 def read_bingo(f):
     with open(f) as f:
         content=f.readlines()
