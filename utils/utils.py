@@ -30,6 +30,18 @@ def read_orig(f):
             line = f.readline()
     return orig_list, instr_list
 
+def read_poly(f):
+    rule_list =[]
+    with open(f) as f:
+        line = f.readline()
+        poly_list = list(line.strip())
+        f.readline(); line=f.readline()
+        while line:
+            inp=line.strip().split()
+            rule_list.append([[inp[0][0], inp[0][1]],inp[2]])
+            line = f.readline()
+    return poly_list, rule_list 
+
 def read_bingo(f):
     with open(f) as f:
         content=f.readlines()
