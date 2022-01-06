@@ -40,13 +40,15 @@ for i in range(40):
     for k in loop_dict_work: loop_dict_work[k] = 0
     max = -1; min = -1
     max_key = ''; min_key = ''
-    for k in frequ_dict:
-        if frequ_dict[k] > max:
-            max = frequ_dict[k]
-            max_key = k
-        if (frequ_dict[k] < min) or (min == -1):
-            min = frequ_dict[k]
-            min_key = k
+
+for k in frequ_dict:
+    if frequ_dict[k] > max:
+        max = frequ_dict[k]
+        max_key = k
+    if (frequ_dict[k] < min) or (min == -1):
+        min = frequ_dict[k]
+        min_key = k
+        
 print (f"Min: {min_key}={min}")
 print (f"Max: {max_key}={max}")
 print (f"Result: {max - min}")
