@@ -28,7 +28,6 @@ def check_packet(packet_bin):
             end_ind = start - 1
     return ver_value, end_ind
 
-
 with open("files/task16.txt") as f: packet_hex = f.readline().strip()
 packet_bin = ""
 for i in range(len(packet_hex)):
