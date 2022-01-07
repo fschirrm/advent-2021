@@ -42,6 +42,25 @@ def read_poly(f):
             line = f.readline()
     return poly_list, rule_list 
 
+def read_beacon(f):
+    beacon_list = []
+    with open(f) as f:
+        line = f.readline()
+        while line:
+            if line[0:3] == '---':
+                new_scan = []
+                beacon_list.append(new_scan)
+            else:
+                if line != "\n":
+                    entry = line.strip().split(",")
+                    entry_int = []
+                    for elem in entry:
+                        entry_int.append(int(elem))
+                    new_scan.append([entry_int])
+            line = f.readline()
+    return beacon_list
+
+
 def read_bingo(f):
     with open(f) as f:
         content=f.readlines()
