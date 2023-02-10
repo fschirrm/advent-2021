@@ -1,6 +1,5 @@
 import utils.utils as utils
 
-
 def new_field(curr_list, infinite_char):
     new_list = []
     new_list.append(infinite_char * (len(curr_list) + 2))
@@ -8,7 +7,6 @@ def new_field(curr_list, infinite_char):
         new_list.append(infinite_char + elem + infinite_char)
     new_list.append(infinite_char * (len(curr_list) + 2))
     return new_list
-
 
 algo_str, pic_list = utils.read_pic_algo("files/task20.txt")
 infinite_char = '.'
